@@ -9,8 +9,9 @@ module.exports = {
   mode: 'production',
   module: {
     rules: [
+      ...base.module.rules,
       {
-        test: /\.css$/,
+        test: /\.s[ac]ss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -19,6 +20,12 @@ module.exports = {
             },
           },
           'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('dart-sass'),
+            },
+          },
         ],
       },
     ],

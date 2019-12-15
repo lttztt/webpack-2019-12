@@ -1,0 +1,10 @@
+$color: yellow;
+$bg-color: gray;
+body {
+  background: $bg-color;
+  h1 {
+  font-size: 30px;
+  color: $color;
+
+  }
+}
