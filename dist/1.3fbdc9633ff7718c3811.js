@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[1],{5:function(n,o,c){"use strict";function s(){console.log("我是懒加载的js文件")}c.r(o),c.d(o,"default",(function(){return s}))}}]);
