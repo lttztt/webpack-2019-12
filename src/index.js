@@ -13,7 +13,7 @@ let img = document.createElement('img')
 img.src = png1
 
 
-div.appendChild(img)
+// div.appendChild(img)
 
 let button = document.createElement('button');
 button.innerText = '懒加载';
