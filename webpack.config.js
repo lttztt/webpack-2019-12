@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-var path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 module.exports = {
   mode: 'development',
@@ -11,8 +12,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+        ],
       },
     ],
   },
@@ -20,6 +30,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'lttztt - web',
       template: 'src/assets/index.html'
-    })
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css',
+      chunkFilename: '[id].[hash].css',
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
+    }),
   ]
 };
